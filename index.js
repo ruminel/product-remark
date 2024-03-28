@@ -6,4 +6,5 @@ let productRemarks = new Map([
     ['593903797625', { firstOrder: 'O_31548708', remarks: '要让客户确认logo方向' }],
     ['714805035914', { firstOrder: 'S_29630056', remarks: '确认食品届' }],
     ['726628787343', { firstOrder: 'F_35261019', remarks: '多买几双备用' }],
+    ['679283023657', { firstOrder: 'S_74790820', remarks: '确认拉链的形状' }],
 ])
