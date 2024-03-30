@@ -8,4 +8,5 @@ let productRemarks = new Map([
     ['726628787343', { firstOrder: 'F_35261019', remarks: '多买几双备用' }],
     ['679283023657', { firstOrder: 'S_74790820', remarks: '确认拉链的形状' }],
     ['660387098410', { firstOrder: 'S_87530396', remarks: '不要发电池' }],
+    ['728222535497', { firstOrder: 'F_05670437', remarks: '确认是否3个1组发货' }],
 ])
