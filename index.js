@@ -10,4 +10,5 @@ let productRemarks = new Map([
     ['660387098410', { firstOrder: 'S_87530396', remarks: '不要发电池' }],
     ['728222535497', { firstOrder: 'F_05670437', remarks: '确认是否3个1组发货' }],
     ['724950195642', { firstOrder: 'F_88715291', remarks: '包装上有3+标志' }],
+    ['651123193426', { firstOrder: 'F_91475372', remarks: '托盘+网+本体组合' }],
 ])
