@@ -13,7 +13,7 @@ let productRemarks = new Map([
     ['651123193426', { firstOrder: 'F_91475372', remarks: '托盘+网+本体要组合' }],
     ['627617185607', { firstOrder: 'F_49326640', remarks: '跑轮和底座要组合' }],
     ['669721040300', { firstOrder: 'S_55132209', remarks: '带磁' }],
-    ['757295765594', { firstOrder: 'F_49326640', remarks: '确认是否有单独包装' }],
+    ['757295765594', { firstOrder: 'F_49326640', remarks: '要改opp袋包装' }],
     ['585687074403', { firstOrder: 'F_49326640', remarks: '确认是否有单独包装' }],
     ['635925573244', { firstOrder: 'F_49326640', remarks: '确认是否有单独包装' }],
 ])
