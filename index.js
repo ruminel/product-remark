@@ -19,4 +19,7 @@ let productRemarks = new Map([
     ['723363230181', { firstOrder: 'J_02056426', remarks: '拍+球+袋组合' }],
     ['681100657475', { firstOrder: 'J_50642781', remarks: '改入opp袋后贴6+' }],
     ['648418804856', { firstOrder: 'J_38509675', remarks: '下单前确认款式' }],
+    ['691882767593', { firstOrder: 'F_79405310', remarks: '问下能否装opp袋出货' }],
+    ['598908898635', { firstOrder: 'F_79405310', remarks: '问下能否装opp袋出货' }],
+    ['657453484061', { firstOrder: 'F_79405310', remarks: '问下能否装opp袋出货' }],
 ])
