@@ -24,4 +24,5 @@ let productRemarks = new Map([
     ['657453484061', { firstOrder: 'F_79405310', remarks: '问下能否装opp袋出货' }],
     ['668348469131', { firstOrder: 'F_72307861', remarks: '确认拉链末端的形状' }],
     ['708688473492', { firstOrder: 'J_75120927', remarks: '包装上有3+标志' }],
+    ['716255648028', { firstOrder: 'F_24473392', remarks: '包装易滑出，需加opp袋' }],
 ])
