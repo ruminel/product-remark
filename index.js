@@ -26,4 +26,5 @@ let productRemarks = new Map([
     ['708688473492', { firstOrder: 'J_75120927', remarks: '包装上有3+标志' }],
     ['716255648028', { firstOrder: 'F_24473392', remarks: '包装易滑出，需加opp袋' }],
     ['648737427960', { firstOrder: 'J_79394834', remarks: '让店家在外盒划颜色标' }],
+    ['713341748070', { firstOrder: 'J_85181710', remarks: '包装上有3+标志' }],
 ])
