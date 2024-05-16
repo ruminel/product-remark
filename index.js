@@ -28,4 +28,5 @@ let productRemarks = new Map([
     ['648737427960', { firstOrder: 'J_79394834', remarks: '让店家在外盒划颜色标' }],
     ['713341748070', { firstOrder: 'J_85181710', remarks: '包装上有3+标志' }],
     ['690995745286', { firstOrder: 'J_14344597', remarks: '桌面收纳筒' }],
+    ['602241428424', { firstOrder: 'J_32855087', remarks: '金属连接片' }],
 ])
