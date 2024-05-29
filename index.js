@@ -37,4 +37,7 @@ let fbaJsonreplenish = {
     "address": "兵庫県神戸市西区見津が丘1丁目26",
     "zipCode": "651-2228"
     },
+    "ZZZZ": {
+        name:"已存在",
+    }
 }
