@@ -33,11 +33,13 @@ let productRemarks = new Map([
 
 let fbaJsonreplenish = {
     "TPB3": {
-    "name": "神戸西FC",
-    "address": "兵庫県神戸市西区見津が丘1丁目26",
-    "zipCode": "651-2228"
+        "name": "神戸西FC",
+        "address": "兵庫県神戸市西区見津が丘1丁目26",
+        "zipCode": "651-2228"
     },
-    "ZZZZ": {
-        name:"已存在",
+    "改发自宅": {
+        "name": "客户自宅",
+        "address": "日本",
+        "zipCode": "000-0000"
     }
 }
