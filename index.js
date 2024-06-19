@@ -30,6 +30,7 @@ let productRemarks = new Map([
     ['690995745286', { firstOrder: 'J_14344597', remarks: '桌面收纳筒' }],
     ['602241428424', { firstOrder: 'J_32855087', remarks: '金属连接片' }],
     ['596998141127', { firstOrder: 'S_85252783', remarks: '改价格' }],
+    ['783708528598', { firstOrder: 'S_73122789', remarks: '让商家去掉胶水发货' }],
 ]);
 
 let fbaJsonreplenish = {
