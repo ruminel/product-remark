@@ -31,6 +31,8 @@ let productRemarks = new Map([
     ['602241428424', { firstOrder: 'J_32855087', remarks: '金属连接片' }],
     ['596998141127', { firstOrder: 'S_85252783', remarks: '改价格' }],
     ['783708528598', { firstOrder: 'S_73122789', remarks: '让商家去掉胶水发货' }],
+    ['644789566251', { firstOrder: 'F_53922469', remarks: '问下能否装opp袋出货' }],
+    ['633049978326', { firstOrder: 'F_53922469', remarks: '问下能否装opp袋出货' }],
 ]);
 
 let fbaJsonreplenish = {
