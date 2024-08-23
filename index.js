@@ -34,6 +34,7 @@ let productRemarks = new Map([
     ['633049978326', { firstOrder: 'F_53922469', remarks: '问下能否装opp袋出货' }],
     ['747491997600', { firstOrder: '', remarks: '刀刃锋利，小心割手' }],
     ['787791191537', { firstOrder: 'J_02040104', remarks: '请店家检查好再发货' }],
+    ['651133735200', { firstOrder: '', remarks: '客户的国内送料确认' }],
 ]);
 
 let fbaJsonreplenish = {
