@@ -36,6 +36,7 @@ let productRemarks = new Map([
     ['787791191537', { firstOrder: 'J_02040104', remarks: '请店家检查好再发货' }],
     ['651133735200', { firstOrder: '', remarks: '客户的国内送料确认' }],
     ['676321330185', { firstOrder: 'S_61975803', remarks: '商品附有胶水' }],
+    ['770712197511', { firstOrder: 'J_82428924', remarks: '商品附有粉末' }],
 ]);
 
 let fbaJsonreplenish = {
