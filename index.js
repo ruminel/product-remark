@@ -53,6 +53,7 @@ let productRemarks = new Map([
     ['770712197511', { firstOrder: 'J_82428924', remarks: '商品附有粉末' }],
     ['641253181958', { firstOrder: 'J_19743694', remarks: '商品侵权，不能采购' }],
     ['660176219406', { firstOrder: '43643535-1', remarks: '到货后留意孔数' }],
+    ['770842348437', { firstOrder: 'F_23732638', remarks: '问下能否装opp袋出货' }],
 ]);
 
 let fbaJsonreplenish = {
