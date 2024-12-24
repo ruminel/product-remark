@@ -56,15 +56,6 @@ let productRemarks = new Map([
     ['770842348437', { firstOrder: 'F_23732638', remarks: '问下能否装opp袋出货' }],
 ]);
 
-let fbaJsonreplenish = {
-    "TPB3": {
-        "name": "神戸西FC",
-        "address": "兵庫県神戸市西区見津が丘1丁目26",
-        "zipCode": "651-2228"
-    },
-    "改发自宅": {
-        "name": "客户自宅",
-        "address": "日本",
-        "zipCode": "000-0000"
-    }
-}
+const 店铺黑名单 = [
+    {'关联订单号': '10200276', '店铺名': '广州颂安贸易商行'},
+]
