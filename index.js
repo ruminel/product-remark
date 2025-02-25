@@ -52,6 +52,8 @@ let productRemarks = new Map([
     ['660176219406', { firstOrder: '43643535-1', remarks: '到货后留意孔数' }],
     ['770842348437', { firstOrder: 'F_23732638', remarks: '问下能否装opp袋出货' }],
     ['728829193744', { firstOrder: 'F_27076712', remarks: '收贴纸、贴片和桶的组合费'}],
+    ['794937061113', { firstOrder: 'F_67239812', remarks: '商品无包装，需收opp袋费'}],
+    ['840423167464', { firstOrder: 'F_61235740', remarks: '商品无包装，需收opp袋费'}],
 ]);
 
 const 店铺黑名单 = [
