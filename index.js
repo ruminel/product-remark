@@ -54,6 +54,7 @@ let productRemarks = new Map([
     ['728829193744', { firstOrder: 'F_27076712', remarks: '收贴纸、贴片和桶的组合费'}],
     ['794937061113', { firstOrder: 'F_67239812', remarks: '商品无包装，需收opp袋费'}],
     ['840423167464', { firstOrder: 'F_61235740', remarks: '商品无包装，需收opp袋费'}],
+    ['860643038852', { firstOrder: 'F_27078377', remarks: '有纽扣电池，可拆卸'}],
 ]);
 
 const 店铺黑名单 = [
