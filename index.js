@@ -56,6 +56,7 @@ let productRemarks = new Map([
     ['840423167464', { firstOrder: 'F_61235740', remarks: '商品无包装，需收opp袋费'}],
     ['860643038852', { firstOrder: 'F_27078377', remarks: '有纽扣电池，可拆卸'}],
     ['595372817553', { firstOrder: 'F_58794562', remarks: '商品无包装，需收opp袋费'}],
+    ['794937061113', { firstOrder: 'F_37453081', remarks: '商品无包装，需收opp袋费'}],
 ]);
 
 const 店铺黑名单 = [
