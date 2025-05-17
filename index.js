@@ -58,6 +58,7 @@ let productRemarks = new Map([
     ['595372817553', { firstOrder: 'F_58794562', remarks: '商品无包装，需收opp袋费'}],
     ['794937061113', { firstOrder: 'F_37453081', remarks: '商品无包装，需收opp袋费'}],
     ['852621657324', { firstOrder: 'J_29499708', remarks: '带磁'}],
+    ['802141565164', { firstOrder: '_', remarks: '加包装收0.3元/个'}],
 ]);
 
 const 店铺黑名单 = [
