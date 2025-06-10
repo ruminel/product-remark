@@ -62,6 +62,7 @@ let productRemarks = new Map([
     ['728919793171', { firstOrder: 'S_58051030', remarks: '带磁'}],
     ['826656951283', { firstOrder: 'F_01864162', remarks: '需收opp袋费'}],
     ['865524044944', { firstOrder: 'F_01864162', remarks: '需收opp袋费'}],
+    ['837608637984', { firstOrder: 'F_23009734', remarks: '需收opp袋费'}],
     ['681801714387', { firstOrder: 'F_01864162', remarks: '商品无包装，需收opp袋费'}],
 ]);
 
