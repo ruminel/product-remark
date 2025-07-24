@@ -66,6 +66,7 @@ let productRemarks = new Map([
     ['681801714387', { firstOrder: 'F_01864162', remarks: '商品无包装，需收opp袋费'}],
     ['921882453586', { firstOrder: '64415600-6', remarks: '让店家同一部件重叠打包'}],
     ['670397471293', { firstOrder: '40159935', remarks: '量多需店家发包卸货物流'}],
+    ['822306060897', { firstOrder: '_', remarks: '下单后备注，让熟练工打扣'}],
 ]);
 
 const 店铺黑名单 = [
