@@ -433,12 +433,20 @@ const productRemarks = {
       "firstOrder": "F_01161246",
       "remarks": "改FBA费用，不收组合费"
     }
-  ]
+  ],
+  "764667507849": [
+    {
+      "firstOrder": "F_83550847",
+      "remarks": "收opp袋费",
+      customerName: "幅将賢(C)"
+    }
+  ],
 }
 
 const 店铺黑名单 = [
     {'关联订单号': '10200276', '店铺名': '广州颂安贸易商行'},
 ]
+
 
 
 
