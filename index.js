@@ -1,4 +1,37 @@
-let productRemarks = {
+/**
+ * 产品备注数据结构说明：
+ * 
+ * 当需要添加新的备注条目时，请按照以下优先级和规则填写：
+ * 
+ * 1. 通用备注（适用所有客户和商品）：
+ *    - 不填写 customerName 和 itemProperties
+ *    - 示例: { orignalOrder: "订单号", remarks: "通用备注内容" }
+ *    - 匹配分数: 1分
+ * 
+ * 2. 客户专用备注（适用特定客户的所有商品）：
+ *    - 填写 customerName，不填写 itemProperties
+ *    - 客户名称需与系统完全一致（会自动去除空格和全角空格比较）
+ *    - 示例: { orignalOrder: "订单号", customerName: "客户A", remarks: "客户专用备注" }
+ *    - 匹配分数: 5分
+ * 
+ * 3. 商品属性备注（适用特定商品属性的所有客户）：
+ *    - 填写 itemProperties，不填写 customerName
+ *    - 商品属性只需是商品属性的子串即可匹配（如"红色"可匹配"红色大号"）
+ *    - 示例: { orignalOrder: "订单号", itemProperties: "红色", remarks: "红色商品注意事项" }
+ *    - 匹配分数: 10分
+ * 
+ * 4. 客户+商品组合备注（最高优先级）：
+ *    - 同时填写 customerName 和 itemProperties
+ *    - 示例: { orignalOrder: "订单号", customerName: "客户A", itemProperties: "XL", remarks: "客户A的XL号商品特殊要求" }
+ *    - 匹配分数: 15分
+ * 
+ * 注意：
+ * - orignalOrder 字段必须填写原始订单号用于追溯
+ * - 匹配系统会自动去除所有空格和全角空格进行比较
+ * - 越具体的备注优先级越高（组合备注 > 商品备注 > 客户备注 > 通用备注）
+ * - 当多个备注得分相同时，后添加的备注会覆盖之前的
+ */
+const productRemarks = {
   "639011027851": [
     {
       "firstOrder": "F_74170807",
@@ -406,5 +439,6 @@ let productRemarks = {
 const 店铺黑名单 = [
     {'关联订单号': '10200276', '店铺名': '广州颂安贸易商行'},
 ]
+
 
 
