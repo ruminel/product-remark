@@ -32,6 +32,14 @@
  * - 当多个备注得分相同时，后添加的备注会覆盖之前的
  */
 const productRemarks = {
+  "842718752579": [
+    {
+      "firstOrder": "89438256-4",
+      "remarks": "棋盘和象棋组合",
+      "itemProperties": "深灰色果冻波浪抓夹",
+      "customerName": "萱場雄二郎",
+    }
+  ],
   "639011027851": [
     {
       "firstOrder": "F_74170807",
@@ -446,6 +454,7 @@ const productRemarks = {
 const 店铺黑名单 = [
     {'关联订单号': '10200276', '店铺名': '广州颂安贸易商行'},
 ]
+
 
 
 
