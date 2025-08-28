@@ -69,10 +69,14 @@ let productRemarks = new Map([
     ['822306060897', { firstOrder: '_', remarks: '让店家全检后发货的'}],
     ['606635910169', { firstOrder: 'F_01161246', remarks: '改FBA费用，不收组合费'}],
     ['807803520793', { firstOrder: 'J_95631761', remarks: '涉及食品届'}],
+    ['825022280685', { firstOrder: 'J_13574085', remarks: '去掉胶水'}],
+    ['756131664591', { firstOrder: 'J_13574085', remarks: '去掉胶水'}],
+    ['754604708805', { firstOrder: 'J_13574085', remarks: '去掉胶水'}],
 ]);
 
 const 店铺黑名单 = [
     {'关联订单号': '10200276', '店铺名': '广州颂安贸易商行'},
 ]
+
 
 
