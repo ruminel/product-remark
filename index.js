@@ -72,11 +72,13 @@ let productRemarks = new Map([
     ['825022280685', { firstOrder: 'J_13574085', remarks: '去掉胶水'}],
     ['756131664591', { firstOrder: 'J_13574085', remarks: '去掉胶水'}],
     ['754604708805', { firstOrder: 'J_13574085', remarks: '去掉胶水'}],
+    ['681743041254', { firstOrder: '_', remarks: '下单备注不要有划痕的'}],
 ]);
 
 const 店铺黑名单 = [
     {'关联订单号': '10200276', '店铺名': '广州颂安贸易商行'},
 ]
+
 
 
 
