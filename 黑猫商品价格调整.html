@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>价格均摊</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+        }
+
+        #result,
+        #originalTotal {
+            white-space: pre;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>价格均摊</h2>
+    <p>输入格式：每个商品占 5 列 → 商品名 / 单位 / 数量 / 币种 / 单价（USD）</p>
+
+    <textarea id="input" title="商品信息源"></textarea><br>
+
+    汇率（1 USD = X JPY）：<input id="rate" type="number" value="" step="0.01" />
+
+    <p>
+        调整目标区间（JPY）：
+        <input id="minTarget" type="number" value="9500" style="width:80px"> 〜
+        <input id="maxTarget" type="number" value="10000" style="width:80px">
+    </p>
+
+    <div id="originalTotal"></div>
+    <div id="result"></div>
+
+    <button type="button" id="copyResult">把调整后的内容复制到粘贴板</button>
+
+    <script>
+        let items = [];
+        let targetJPY = 10000;
+
+        // -----------------------------
+        // 自动提示汇率（保留一天）
+        // -----------------------------
+        function promptRate() {
+            const rateInput = document.querySelector('#rate');
+            const rate = prompt('请输入 USD → JPY 汇率：');
+            if (rate) rateInput.value = rate;
+        }
+        function checkRate() {
+            const rateInput = document.querySelector('#rate');
+            const today = new Date().toISOString().slice(0, 10);
+            const savedDate = localStorage.getItem('rateDate');
+
+            if (savedDate !== today) {
+                promptRate();
+                localStorage.setItem('rateDate', today);
+                localStorage.setItem('rateValue', rateInput.value);
+            } else {
+                const savedRate = localStorage.getItem('rateValue');
+                if (savedRate) rateInput.value = savedRate;
+                else {
+                    promptRate();
+                    localStorage.setItem('rateValue', rateInput.value);
+                }
+            }
+        }
+
+        // -----------------------------
+        // 粘贴触发处理逻辑
+        // -----------------------------
+        document.querySelector("#input").addEventListener("paste", (event) => {
+            setTimeout(process, 10); // 等 textarea 真正写入后再处理
+        });
+        document.querySelector("#minTarget").addEventListener("change", process);
+        document.querySelector("#maxTarget").addEventListener("change", process);
+        document.querySelector("#rate").addEventListener("change", process);
+
+        // -----------------------------
+        // 主流程
+        // -----------------------------
+        function process() {
+            items.length = 0;
+            const text = document.getElementById('input').value.trim();
+            if (!text) return;
+
+            const rate = parseFloat(document.getElementById('rate').value);
+
+            const cols = text.split('\t');
+            if (cols.length % 5 !== 0) {
+                document.getElementById('result').textContent = '❌ 列数不是 5 的倍数，无法解析';
+                return;
+            }
+
+            items = parseItems(cols);
+
+            const totalUSD = calculateTotalUSD(items);
+            const originalJPY = totalUSD * rate;
+
+            // 显示调整前总价
+            document.getElementById("originalTotal").textContent =
+                `调整前日元总价：${originalJPY.toFixed(2)} JPY`;
+
+            // -------------------
+            // 计算目标随机值
+            // -------------------
+            const minT = parseFloat(document.getElementById('minTarget').value);
+            const maxT = parseFloat(document.getElementById('maxTarget').value);
+            targetJPY = randomBetween(minT, maxT);
+
+            if (originalJPY <= targetJPY) {
+                document.getElementById("result").textContent = "无需调整，总价已在目标区间内。";
+                return;
+            }
+
+            // 第一次按比例压价
+            const diffUSD = (originalJPY - targetJPY) / rate;
+            let adjustedItems = adjustPrices(items, totalUSD, diffUSD);
+
+            // 第二次微调，确保总价 ≤ 目标JPY
+            adjustedItems = fineTunePrice(adjustedItems, rate, targetJPY);
+
+            // 输出
+            displayResults(adjustedItems, rate);
+
+            // 更新全局 items 变量，供复制使用
+            items = adjustedItems;
+        }
+
+        // -----------------------------
+        // 工具函数
+        // -----------------------------
+        function parseItems(cols) {
+            const list = [];
+            for (let i = 0; i < cols.length; i += 5) {
+                list.push({
+                    name: cols[i],
+                    unit: cols[i + 1],
+                    qty: parseFloat(cols[i + 2]),
+                    price: parseFloat(cols[i + 4]),
+                });
+            }
+            return list;
+        }
+
+        function calculateTotalUSD(items) {
+            return items.reduce((s, it) => s + it.qty * it.price, 0);
+        }
+
+        function randomBetween(min, max) {
+            return min + Math.random() * (max - min);
+        }
+
+        function adjustPrices(items, totalUSD, diffUSD) {
+            return items.map(it => {
+                const subtotal = it.qty * it.price;
+                const weight = subtotal / totalUSD;
+                const minus = diffUSD * weight;
+                const newSubtotal = subtotal - minus;
+                const newPrice = Math.round((newSubtotal / it.qty) * 100) / 100;
+                return { ...it, newPrice };
+            });
+        }
+
+        // -----------------------------
+        // 二次微调，使最终 ≤ 目标
+        // -----------------------------
+        function fineTunePrice(items, rate, targetJPY) {
+            let totalJPY = calcJPY(items, rate);
+            let safety = 50000; // 防止死循环
+
+            while (totalJPY > targetJPY && safety-- > 0) {
+                // 找出单价最高 → 优先减少
+                let highest = items.reduce((a, b) => (a.newPrice > b.newPrice ? a : b));
+
+                if (highest.newPrice <= 0) break;
+
+                highest.newPrice = Math.max(0, highest.newPrice - 0.01);
+                highest.newPrice = Math.round(highest.newPrice * 100) / 100;
+
+                totalJPY = calcJPY(items, rate);
+            }
+
+            return items;
+        }
+
+        function calcJPY(items, rate) {
+            const totalUSD = items.reduce((s, it) => s + it.newPrice * it.qty, 0);
+            return totalUSD * rate;
+        }
+
+        // -----------------------------
+        // 显示输出
+        // -----------------------------
+        function displayResults(items, rate) {
+            const totalJPY = calcJPY(items, rate).toFixed(2);
+
+            const txt = items
+                .map(it => [it.name, it.unit, it.qty, "USD", it.newPrice.toFixed(2)].join('\t'))
+                .join('\n');
+
+            document.getElementById("result").textContent =
+                `调整目标（随机）：${targetJPY.toFixed(2)} JPY\n` +
+                `调整后日元总价：${totalJPY} JPY\n\n` + txt;
+        }
+
+        // -----------------------------
+        // 复制按钮
+        // -----------------------------
+        document.querySelector("#copyResult").addEventListener("click", () => {
+            const article = createArticle();
+            copyToText(article, "text/html");
+            alert("已复制到粘贴板");
+        });
+        function createArticle() {
+            return copyinnerHtml = `<table><tbody><tr>` +
+                items.map(item => `
+                <td>${item.name}</td>
+                <td>${item.unit}</td>
+                <td>${item.qty}</td>
+                <td>USD</td>
+                <td>${item.newPrice}</td>
+            `).join('') +
+                `</tr></tbody></table>`;
+        }
+        function copyToText(article, formats = "text/plain") {
+            let handler = copy(article, formats);
+            document.addEventListener("copy", handler);
+            document.execCommand("copy");
+            document.removeEventListener("copy", handler);
+        }
+        function copy(article, formats) {
+            return function (e) {
+                e.clipboardData.setData(formats, article);
+                e.preventDefault();
+            };
+        }
+
+        // -----------------------------
+        window.onload = checkRate;
+        // -----------------------------
+    </script>
+</body>
+
+</html>
