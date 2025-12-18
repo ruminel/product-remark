@@ -172,7 +172,7 @@
             
             for (let i = 0; i < lines.length; i++) {
                 // 使用正则表达式分割制表符，处理多个连续制表符的情况
-                const columns = lines[i].split('\t').map(col => col.trim());
+                const columns = lines[i].replace('\n',' ').split('\t').map(col => col.trim());
                 rows.push(columns);
             }
             
