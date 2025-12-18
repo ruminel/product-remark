@@ -86,11 +86,9 @@
             background-color: #d4edda;
             border: 1px solid #c3e6cb;
             color: #155724;
-            padding: 15px;
             border-radius: 4px;
             margin-top: 20px;
         }
-        
         .section {
             margin-bottom: 30px;
         }
@@ -101,6 +99,18 @@
             font-weight: bold;
             color: #555;
         }
+        .copy-btn {
+					background: none;
+					border: none;
+					cursor: pointer;
+					font-size: 16px;
+					padding: 2px 5px;
+					border-radius: 3px;
+			}
+
+			.copy-btn:hover {
+					background-color: #f0f0f0;
+			}
     </style>
 </head>
 <body>
@@ -119,10 +129,74 @@
         
         <button onclick="processData()">处理数据并生成文件</button>
     </div>
-
+    <div id="success"></div>
     <div id="results"></div>
 
+
     <script>
+        function preprocessText(text) {
+            const lines = text.split('\n');
+            
+            let result = [];
+            let buffer = [];
+            let inQuotes = false;
+            
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                const trimmedLine = line.trim();
+                
+                if (trimmedLine === '') continue;
+                
+                // 检查引号状态
+                let quoteBalance = 0;
+                let escaped = false;
+                
+                for (let j = 0; j < line.length; j++) {
+                    const char = line[j];
+                    
+                    if (char === '\\' && !escaped) {
+                        escaped = true;
+                        continue;
+                    }
+                    
+                    if (char === '"' && !escaped) {
+                        quoteBalance++;
+                    }
+                    
+                    escaped = false;
+                }
+                
+                if (!inQuotes) {
+                    // 不在引号内
+                    if (quoteBalance % 2 === 1) {
+                        // 奇数个引号，开始引号区域
+                        buffer.push(line);
+                        inQuotes = true;
+                    } else {
+                        // 正常行
+                        result.push(line);
+                    }
+                } else {
+                    // 在引号内，添加行到缓冲区
+                    buffer.push(line.trim());
+                    
+                    if (quoteBalance % 2 === 1) {
+                        // 遇到结束引号
+                        const mergedLine = buffer.join(' ');
+                        result.push(mergedLine);
+                        buffer = [];
+                        inQuotes = false;
+                    }
+                }
+            }
+            
+            // 处理缓冲区中剩余的内容
+            if (buffer.length > 0) {
+                result.push(buffer.join(' '));
+            }
+            
+            return result.join('\n');
+        }
         function processData() {
             const orderNumber = document.getElementById('orderNumber').value.trim();
             const textInput = document.getElementById('textInput').value.trim();
@@ -139,10 +213,13 @@
             
             // 清空之前的结果
             document.getElementById('results').innerHTML = '';
+            document.getElementById('success').innerHTML = '';
             
             try {
+                // 预处理文本，修复被意外断开的行
+                const repairedText = preprocessText(textInput);
                 // 解析文本数据为二维数组
-                const rows = parseTextToTable(textInput);
+                const rows = parseTextToTable(repairedText);
                 
                 // 验证列数并记录不足的行
                 const insufficientRows = validateRowLength(rows);
@@ -150,17 +227,15 @@
                 // 按复合键整理数据，记录冲突的行
                 const { validRows, duplicateRows } = organizeByCompositeKey(rows);
                 
-                // 显示错误信息
-                displayErrors(insufficientRows, duplicateRows, rows);
-                
                 // 如果有有效数据，生成文件
                 if (validRows.length > 0) {
-                    generateAndDownloadFile(validRows, orderNumber);
-                    showSuccessMessage(validRows.length);
+                    const fileContent = generateLine(validRows, orderNumber);
+                    showSuccessMessage(fileContent, validRows.length);
                 } else {
                     alert('没有有效的数据可以生成文件！');
                 }
-                
+                // 显示错误信息
+                displayErrors(insufficientRows, duplicateRows, rows);
             } catch (error) {
                 alert('处理数据时出现错误：' + error.message);
             }
@@ -171,8 +246,9 @@
             const rows = [];
             
             for (let i = 0; i < lines.length; i++) {
-                // 使用正则表达式分割制表符，处理多个连续制表符的情况
-                const columns = lines[i].replace('\n',' ').split('\t').map(col => col.trim());
+                // 使用正则表达式分割制表符
+                const columns = lines[i].replaceAll('"','').split('\t')
+                .map(col => col.trim());
                 rows.push(columns);
             }
             
@@ -318,7 +394,7 @@
             resultsDiv.innerHTML = errorHtml;
         }
         
-        function generateAndDownloadFile(validRows, orderNumber) {
+        function generateLine(validRows, orderNumber) {
             const lines = [];
             
             // 添加标题行
@@ -345,10 +421,9 @@
                 lines.push(infoPage);
                 lines.push(tabPage);
             });
-            
             // 创建文本内容
             const fileContent = lines.join('\n');
-            
+            return fileContent;
             // 创建Blob并下载
             const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
             const url = URL.createObjectURL(blob);
@@ -361,19 +436,72 @@
             URL.revokeObjectURL(url);
         }
         
-        function showSuccessMessage(validRowCount) {
-            const resultsDiv = document.getElementById('results');
+        function showSuccessMessage(fileContent, validRowCount) {
+            const resultsDiv = document.getElementById('success');
             const successHtml = `
-                <div class="container">
-                    <div class="success-message">
-                        <h3>✓ 处理完成！</h3>
-                        <p>成功处理了 ${validRowCount} 行有效数据。</p>
-                        <p>已生成并下载文件：${document.getElementById('orderNumber').value} 标签信息.txt</p>
-                    </div>
+                <div class="copyable-group container" style="position: relative;">
+										<h3>✓ 打印用数据</h3>
+										<p>成功处理了 ${validRowCount} 行有效数据。</p>
+                    <textarea class="success-message" readonly></textarea>
+                    <label for="copy-btn">点击复制
+											<button class="copy-btn" id="copy-btn" title="点击复制">📋</button>
+                    </label>
+                    <div id="copyTip" style="position: absolute; top: -30px; left: 0; background: #4CAF50; color: white; padding: 5px 10px; border-radius: 3px; font-size: 12px; opacity: 0; transition: opacity 0.3s;">已复制!</div>
                 </div>
             `;
             resultsDiv.innerHTML += successHtml;
+            const sucessArea = resultsDiv.querySelector('.success-message')
+            if(sucessArea){sucessArea.value = fileContent;}
         }
+        document.getElementById('success').addEventListener('click', function(e) {
+						if (e.target.closest('#copy-btn')) {
+								copyToClipboard(e.target.value);
+								showCopyFeedback(e.target);
+						}
+				});
+				function copyToClipboard(text) {
+						// 现代浏览器方法
+						if (navigator.clipboard && window.isSecureContext) {
+								navigator.clipboard.writeText(text).then(() => {
+										console.log('复制成功');
+								}).catch(err => {
+										console.error('复制失败:', err);
+										fallbackCopy(text);
+								});
+						} else {
+								fallbackCopy(text);
+						}
+				}
+
+				function fallbackCopy(text) {
+						// 兼容旧浏览器的备用方法
+						const textArea = document.createElement('textarea');
+						textArea.value = text;
+						textArea.style.position = 'fixed';
+						textArea.style.opacity = '0';
+						document.body.appendChild(textArea);
+						textArea.select();
+						
+						try {
+								document.execCommand('copy');
+								console.log('复制成功');
+						} catch (err) {
+								console.error('复制失败:', err);
+						}
+						
+						document.body.removeChild(textArea);
+				}
+
+				function showCopyFeedback(element) {
+					const tip = document.getElementById('copyTip');
+					// 显示提示
+					tip.style.opacity = '1';
+					
+					// 2秒后隐藏
+					setTimeout(() => {
+						tip.style.opacity = '0';
+					}, 2000);
+				}
     </script>
 </body>
 </html>
