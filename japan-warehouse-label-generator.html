@@ -455,7 +455,9 @@
         }
         document.getElementById('success').addEventListener('click', function(e) {
 						if (e.target.closest('#copy-btn')) {
-								copyToClipboard(e.target.value);
+								const resultsDiv = document.getElementById('success');
+								const copyText = resultsDiv.querySelector('.success-message')?.value;
+								copyToClipboard(copyText);
 								showCopyFeedback(e.target);
 						}
 				});
