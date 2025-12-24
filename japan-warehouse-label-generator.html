@@ -400,7 +400,19 @@
             
             // 添加标题行
             lines.push('FNSKU\t说明文本\t箱外文本\t商品名\t商品名-1\t商品数量');
-            
+			// 为每一行生成箱外标签
+            validRows.forEach(row => {
+                const sku = row[0];
+                const barcode = row[1];
+                const productName = row[2];
+                const spec1 = row[4] || '';
+                const spec2 = row[5] || '';
+                const quantity = row[6] || '';
+
+                // 生成标签页
+                const tabPage = `${barcode}\t${barcode}\t\t${sku}\t${sku}\t2`;
+                lines.push(tabPage);
+            });            
             // 为每一行生成信息页和标签页
             validRows.forEach(row => {
                 const sku = row[0];
