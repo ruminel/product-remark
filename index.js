@@ -86,11 +86,14 @@ let productRemarks = new Map([
     ['574689709810', { firstOrder: '_', remarks: '包装盒不组装和商品分开发'}],
     ['637084077059', { firstOrder: 'F_12165738', remarks: '下单时发踏板的照片'}],
     ['714357515094', { firstOrder: 'J_93440185', remarks: '下单提醒商家让物流上楼'}],
+    ['719823401880', { firstOrder: 'F_48879242', remarks: '收opp袋费'}],
+    ['728073717729', { firstOrder: 'F_48879242', remarks: '收opp袋费'}],
 ]);
 
 const 店铺黑名单 = [
     {'关联订单号': '10200276', '店铺名': '广州颂安贸易商行'},
 ]
+
 
 
 
