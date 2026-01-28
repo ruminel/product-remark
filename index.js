@@ -93,11 +93,15 @@ let productRemarks = new Map([
     ['1008478624482', { firstOrder: '', remarks: '浅金色'}],
     ['1007724673769', { firstOrder: '', remarks: '金色'}],
     ['673648083329', { firstOrder: 'F_51681922', remarks: '重点检查把手的缝线'}],
+    ['646707066547', { firstOrder: 'F_31850239', remarks: '需加收上楼费'}],
+    ['803289761509', { firstOrder: '_', remarks: '各配件请加强包装再发货'}],
+    ['802152971252', { firstOrder: '_', remarks: '各配件请加强包装再发货'}],
 ]);
 
 const 店铺黑名单 = [
     {'关联订单号': '10200276', '店铺名': '广州颂安贸易商行'},
 ]
+
 
 
 
