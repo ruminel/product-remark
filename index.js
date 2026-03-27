@@ -98,6 +98,7 @@ let productRemarks = new Map([
     ['802152971252', { firstOrder: '_', remarks: '各配件请加强包装再发货'}],
     ['551137464336', { firstOrder: 'F_10439249', remarks: '水嘴涉及食品届'}],
     ['660880702937', { firstOrder: '_', remarks: '图片款钥匙扣收客人1元/个'}],
+    ['675094519734', { firstOrder: '_', remarks: '让店家加强包装发货'}],
 ]);
 
 const 店铺黑名单 = [
