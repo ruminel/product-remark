@@ -100,6 +100,7 @@ let productRemarks = new Map([
     ['660880702937', { firstOrder: '_', remarks: '图片款钥匙扣收客人1元/个'}],
     ['675094519734', { firstOrder: '_', remarks: '让店家加强包装发货'}],
     ['681587038437', { firstOrder: 'J_11751304', remarks: '卷曲时搓成圆的'}],
+    ['692184300497', { firstOrder: 'F_46113510', remarks: '收装opp费用'}],
 ]);
 
 const 店铺黑名单 = [
