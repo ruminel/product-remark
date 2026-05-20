@@ -101,6 +101,7 @@ let productRemarks = new Map([
     ['675094519734', { firstOrder: '_', remarks: '让店家加强包装发货'}],
     ['681587038437', { firstOrder: 'J_11751304', remarks: '卷曲时搓成圆的'}],
     ['692184300497', { firstOrder: 'F_46113510', remarks: '收装opp费用'}],
+    ['722770836882', { firstOrder: '', remarks: '下单备注让商家区分颜色'}],
 ]);
 
 const 店铺黑名单 = [
