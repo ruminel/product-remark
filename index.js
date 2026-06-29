@@ -104,6 +104,7 @@ let productRemarks = new Map([
     ['722770836882', { firstOrder: '', remarks: '下单备注让商家区分颜色'}],
     ['641895219689', { firstOrder: '13672008', remarks: '10个一组收费2元'}],
     ['834361687819', { firstOrder: '', remarks: '钕铁硼磁体，不能发'}],
+    ['854790131124', { firstOrder: 'J_33693868', remarks: '10个1组收客户1元'}],
 ]);
 
 const 店铺黑名单 = [
