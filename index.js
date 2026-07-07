@@ -106,6 +106,7 @@ let productRemarks = new Map([
     ['834361687819', { firstOrder: '', remarks: '钕铁硼磁体，不能发'}],
     ['854790131124', { firstOrder: 'J_33693868', remarks: '10个1组收客户1元'}],
     ['821139618941', { firstOrder: '', remarks: '店家带15件套配件发货'}],
+    ['639743733538', { firstOrder: 'F_70219631', remarks: '客户要真空压缩出货'}],
 ]);
 
 const 店铺黑名单 = [
