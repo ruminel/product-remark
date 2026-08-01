@@ -107,6 +107,7 @@ let productRemarks = new Map([
     ['854790131124', { firstOrder: 'J_33693868', remarks: '10个1组收客户1元'}],
     ['821139618941', { firstOrder: '', remarks: '店家带15件套配件发货'}],
     ['639743733538', { firstOrder: 'F_70219631', remarks: '客户要真空压缩出货'}],
+    ['988776996898', { firstOrder: 'F_69945509', remarks: '让店家不配布袋出货'}],
 ]);
 
 const 店铺黑名单 = [
