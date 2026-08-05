@@ -108,6 +108,8 @@ let productRemarks = new Map([
     ['821139618941', { firstOrder: '', remarks: '店家带15件套配件发货'}],
     ['639743733538', { firstOrder: 'F_70219631', remarks: '客户要真空压缩出货'}],
     ['988776996898', { firstOrder: 'F_69945509', remarks: '让店家不配布袋出货'}],
+    ['845734610259', { firstOrder: 'F_82672104', remarks: '备注有质量问题也不退换'}],
+    ['684114255872', { firstOrder: 'F_82672104', remarks: '备注有质量问题也不退换'}],
 ]);
 
 const 店铺黑名单 = [
