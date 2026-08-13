@@ -110,6 +110,7 @@ let productRemarks = new Map([
     ['988776996898', { firstOrder: 'F_69945509', remarks: '让店家不配布袋出货'}],
     ['845734610259', { firstOrder: 'F_82672104', remarks: '备注有质量问题也不退换'}],
     ['684114255872', { firstOrder: 'F_20679404', remarks: '备注有质量问题也不退换'}],
+    ['628062813970', { firstOrder: 'F_86456677', remarks: '下单备注地毯折起来发货'}],
 ]);
 
 const 店铺黑名单 = [
