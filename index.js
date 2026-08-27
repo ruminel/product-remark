@@ -111,6 +111,8 @@ let productRemarks = new Map([
     ['845734610259', { firstOrder: 'F_82672104', remarks: '备注有质量问题也不退换'}],
     ['684114255872', { firstOrder: 'F_20679404', remarks: '备注有质量问题也不退换'}],
     ['628062813970', { firstOrder: 'F_86456677', remarks: '下单备注地毯折起来发货'}],
+    ['921685603971', { firstOrder: 'J_76712663', remarks: '让商家去掉盒，改用opp袋包装'}],
+    ['941943481042', { firstOrder: '', remarks: '到货是10个一组'}],
 ]);
 
 const 店铺黑名单 = [
