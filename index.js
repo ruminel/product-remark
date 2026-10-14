@@ -118,6 +118,7 @@ let productRemarks = new Map([
     ['970230478422', { firstOrder: 'F_84235871', remarks: '店家可以给50元的单价'}],
     ['596809780795', { firstOrder: 'F_26181380', remarks: '让店家标注毛巾颜色'}],
     ['1069501643045', { firstOrder: 'J_53332477', remarks: '店家不接尺寸分割'}],
+    ['853176930398', { firstOrder: '', remarks: '此链接合计50-100个单价给客人减0.5元'}],
 ]);
 
 const 店铺黑名单 = [
