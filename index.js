@@ -120,6 +120,7 @@ let productRemarks = new Map([
     ['1069501643045', { firstOrder: 'J_53332477', remarks: '店家不接尺寸分割'}],
     ['853176930398', { firstOrder: '', remarks: '此链接合计50-100个单价给客人减0.5元'}],
     ['633220412044', { firstOrder: '', remarks: '店家带挂绳发货到货确认'}],
+    ['1075863292759', { firstOrder: '', remarks: '发特殊货'}],
 ]);
 
 const 店铺黑名单 = [
