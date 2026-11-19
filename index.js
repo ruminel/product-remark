@@ -121,6 +121,7 @@ let productRemarks = new Map([
     ['853176930398', { firstOrder: '', remarks: '此链接合计50-100个单价给客人减0.5元'}],
     ['633220412044', { firstOrder: '', remarks: '店家带挂绳发货到货确认'}],
     ['1075863292759', { firstOrder: '', remarks: '经EOW确认，可以发普货。'}],
+    ['690515656681', { firstOrder: '', remarks: '提醒工厂不要发错尺寸'}],
 ]);
 
 const 店铺黑名单 = [
