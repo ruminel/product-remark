@@ -122,6 +122,7 @@ let productRemarks = new Map([
     ['633220412044', { firstOrder: '', remarks: '店家带挂绳发货到货确认'}],
     ['1075863292759', { firstOrder: '', remarks: '经EOW确认，可以发普货。'}],
     ['690515656681', { firstOrder: '', remarks: '提醒工厂不要发错尺寸'}],
+    ['628212539295', { firstOrder: 'J_26368495', remarks: '用合适的箱包装，放在最上面'}],
 ]);
 
 const 店铺黑名单 = [
